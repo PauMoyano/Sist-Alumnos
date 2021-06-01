@@ -66,9 +66,15 @@ const orderForceCre = ()=>{
 }*/
     return (
         <div>
-         <button className="btn-addAlumn">Nuevo Alumno</button>
-         <button className="btn-showAlumn">Ver Alumnos</button>
-         <button className="btn-addMateria">Inscripcion a materias</button>
+          <Link to="/nuevo">
+          <button className="btn-addAlumn">Nuevo Alumno</button>
+          </Link>
+          <Link to="#">
+          <button className="btn-showAlumn">Ver Alumnos</button>
+          </Link>
+          <Link to="#">
+          <button className="btn-addMateria">Inscripcion a materias</button>
+          </Link>
         </div>
     )
 }
