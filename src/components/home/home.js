@@ -69,7 +69,7 @@ const orderForceCre = ()=>{
           <Link to="/nuevo">
           <button className="btn-addAlumn">Nuevo Alumno</button>
           </Link>
-          <Link to="#">
+          <Link to="/ver">
           <button className="btn-showAlumn">Ver Alumnos</button>
           </Link>
           <Link to="#">

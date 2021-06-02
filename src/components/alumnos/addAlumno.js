@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux';
-//import { addProduct } from '../../actions/productActions';
-import swal from 'sweetalert';
+//import { Link } from "react-router-dom";
+//import { useDispatch, useSelector } from 'react-redux';
+import "./addalumno.css";
+//import swal from 'sweetalert';
 import { Button } from 'react-bootstrap';
 
 const AddAlumno = () => {
@@ -57,6 +57,7 @@ const AddAlumno = () => {
                <div>
                    <label>Fecha de Nac:</label>
                    <input
+                   type = "date"
                    className="form-add-alumn"
                    {...register("fechaNac",{required:{value:true, message:'Requerido'}})
                    }
@@ -93,8 +94,9 @@ const AddAlumno = () => {
                <div>
                    <label>Teléfono:</label>
                    <input
+                   type = "number"
                    className="form-add-alumn"
-                   {...register("telefono",{required:{value:true, message:'Requerido'}})
+                   {...register("telefono",{required:{value:true, message:'Requerido'},minLength:{value:10, message:'Debe poseer al menos 10 digitos'}})
                    }
                    />
                    {errors.telefono && <span className="text-danger text-small m-2">{errors.telefono.message}</span>}
