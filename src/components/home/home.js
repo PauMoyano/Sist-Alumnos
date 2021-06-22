@@ -2,79 +2,56 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 //import Pagination from './pagination';
+import { Button, Nav } from 'react-bootstrap';
 import './home.css'
+import CrudCarreras from '../carreras/crudCarreras';
+import CrudMaterias from '../materias/crudMaterias';
+import ShowAlumnos from '../alumnos/showAlumnos';
+import Inscripciones from '../inscripciones/inscripciones';
+
 
 function Home() {
     //-------------------REDUX-----------------------
     const dispatch = useDispatch();
   
     //--------------------REACT-----------------------
-
+    const [mostrar, setmostrar] = useState([]);
+    console.log(mostrar)
     //----------------filtro x name ------------------
- /* const handleInputChange = (e) => {
-    const value = e.target.value
-    setPokeName(value)
-  }
-
-  const searchName = async ()  =>{
-    
-    if(!pokeName){
-      setfiltrado(false)
-    } else {
-      dispatch(getPokemonName(pokeName))
-      setfilterPokemons(pokemons.pokemon)
-      setfiltrado(true)
-    }
-    
-  }
-  const allPokemons = async (e)  =>{ 
-    
-    setTotalPokemons(pokemons.pokemons)
-    setfiltrado(false)
-  }*/
-
-    //---------------Pagination---------------------
- /*const [ currentPage, setCurrentPage ] = useState(1); // pagina mostrando actualmente
- const [ pokePerPage ] = useState(6); // cant de prod por pag
  
 
-
-const indexOfLastPoke = currentPage * pokePerPage;  // índice primer prod de la pag
-const indexOfFirstPoke = indexOfLastPoke - pokePerPage; // índice último prod de la pag
-
-//---Change Page----
-const paginate = (pageNumbers) => setCurrentPage(pageNumbers)*/
+    //---------------Pagination---------------------
+ 
 
 //---------------------ORDENAMIENTOS------------------------
-/*const orderNameCre =()=>{
-  const orderNames =[...totalPokemons].sort((a, b) => (a.name > b.name ? 1 : a.name < b.name ? -1 : 0))
-  setTotalPokemons(orderNames)
-}
-const orderNameDecre =()=>{
-  
-  const orderNames =[...totalPokemons].sort((a, b) => (a.name < b.name ? 1 : a.name > b.name ? -1 : 0))
-  setTotalPokemons(orderNames)
-}
-const orderForceCre = ()=>{
-   const orderHp= [...totalPokemons].sort((a, b) => a.hp - b.hp)
-  setTotalPokemons(orderHp)
- }
-
- const orderForceDecre = ()=>{
-  const orderHp= [...totalPokemons].sort((a, b) => b.hp - a.hp)
-  setTotalPokemons(orderHp)
-}*/
+/**/
+/* <Link to="/nuevo">
+          <Button className="btn-addAlumn">Nuevo Alumno</Button>
+          </Link>
+          */
     return (
         <div>
-          <Link to="/nuevo">
-          <button className="btn-addAlumn">Nuevo Alumno</button>
-          </Link>
-          <Link to="/ver">
-          <button className="btn-showAlumn">Ver Alumnos</button>
-          </Link>
-          <Link to="#">
-          <button className="btn-addMateria">Inscripcion a materias</button>
-          </Link>
+          <div>
+          <Nav variant="tabs" defaultActiveKey="/home">
+          <Nav.Item>
+          <Nav.Link onClick={() => setmostrar("alumnos")}>Alumnos</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+          <Nav.Link onClick={() => setmostrar("carreras")}>Carreras</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+          <Nav.Link onClick={() => setmostrar("materias")}>Materias</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+          <Nav.Link onClick={() => setmostrar("inscripciones")}>Inscripciones</Nav.Link>
+          </Nav.Item>
+          </Nav>
+          </div>
+          <div>
+            {
+              mostrar && mostrar === 'carreras' ? <CrudCarreras/>: mostrar === 'alumnos'? <ShowAlumnos/>: mostrar === 'materias'? <CrudMaterias/>: mostrar === 'inscripciones'? <Inscripciones/>:""
+            }
+          </div>
         </div>
     )
 }

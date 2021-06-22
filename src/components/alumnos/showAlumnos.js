@@ -17,29 +17,35 @@ const ShowAlumnos = () => {
      } 
  
      return (
+       
         <div>
+          <div>
+          <Link to="/nuevo">
+          <Button className="btn-addAlumn">Nuevo Alumno</Button>
+          </Link>
+          </div>
             <Table responsive>
-  <thead>
-    <tr>
-      <th>#</th>
-      {Array.from({ length: 12 }).map((_, index) => (
-        <th key={index}>{cabeceras[index]}</th>
-      ))}
-    </tr>
-  </thead>
-  <tbody>
-  {alumnos.map((alumno, index) => {
-    return (
-            <tr>
-                <td>{index +1}</td>
-                {Array.from({ length: 12 }).map((_, index) => (
-                     <td key={index}>{alumno[index]}</td>
-                ))}
-            </tr>
-            );
-  })}  
-  </tbody>
-</Table>
+                 <thead>
+                   <tr>
+                   <th>#</th>
+                   {Array.from({ length: 12 }).map((_, index) => (
+                   <th key={index}>{cabeceras[index]}</th>
+                   ))}
+                  </tr>
+                  </thead>
+                 <tbody>
+                      {alumnos.map((alumno, index) => {
+                       return (
+                                 <tr>
+                                 <td>{index +1}</td>
+                                 {Array.from({ length: 12 }).map((_, index) => (
+                                 <td key={index}>{alumno[index]}</td>
+                                 ))}
+                                 </tr>
+                              );
+                       })}  
+                   </tbody>
+            </Table>
         </div>
                              
      )
